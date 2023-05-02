@@ -190,49 +190,42 @@ elif [ "$DATA_TYPE" = "deepeventmine" ]; then
     cd $MODEL_DIR
 
     if [ "$CORPUS_NAME" = "cg" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/cg.tar.gz
         tar -xzvf cg.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "pc" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/pc.tar.gz
         tar -xzvf pc.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "ge13" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/ge13.tar.gz
         tar -xzvf ge13.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "ge11" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/ge11.tar.gz
         tar -xzvf ge11.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "id" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/id.tar.gz
         tar -xzvf id.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "epi" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/epi.tar.gz
         tar -xzvf epi.tar.gz
         rm *.tar.gz
         cd $ROOT_DIR
 
     elif [ "$CORPUS_NAME" = "mlee" ]; then
-
         wget https://b2share.eudat.eu/api/files/3cf6c1f4-5eed-4ee3-99c5-d99f5f011be3/mlee.tar.gz
         tar -xzvf mlee.tar.gz
         rm *.tar.gz
@@ -245,18 +238,31 @@ elif [ "$DATA_TYPE" = "brat" ]; then
     echo "Download brat"
     
     BRAT_DIR="brat"
-    
+    BRAT_VERSION="brat-1.3p1"
     mkdir -p $BRAT_DIR
     cd $BRAT_DIR
     
     wget https://github.com/nlplab/brat/archive/refs/tags/v1.3p1.tar.gz
     tar -xzvf v1.3p1.tar.gz
-    mv brat-1.3p1 brat-v1.3_Crunchy_Frog
     rm *.tar.gz
+    cd $BRAT_VERSION
 
+    # CHECK IF PYTHON 2 IS AVAILABLE FOR BRAT INSTALLATION. IF NO, PROCEED INSTALL PYTHON 2.7
+    if ! [ -x "$(python2 -v git)" ]
+    then
+        echo "Python2 could not be found. BRAT requires Python 2.5 and above. Installing Python2.7 now..."
+        sudo apt install python2.7
+    fi
+    ./install.sh -u
+
+    # PROMPT USER TO START BRAT SERVICE ON LOCALHOST
+    echo "Do you want to open BRAT on localhost? Y/N:"
+    read promptBRAT
+    if [ "$promptBRAT" = "Y" ]; then
+        python2.7 standalone.py
+    fi
     cd $ROOT_DIR
-        
+
 fi
 
 echo "Done!"
-
