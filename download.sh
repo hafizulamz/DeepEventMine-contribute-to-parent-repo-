@@ -249,7 +249,8 @@ elif [ "$DATA_TYPE" = "brat" ]; then
     mkdir -p $BRAT_DIR
     cd $BRAT_DIR
     
-    wget http://weaver.nlplab.org/~brat/releases/brat-v1.3_Crunchy_Frog.tar.gz
+    wget https://github.com/nlplab/brat/archive/refs/tags/v1.3p1.tar.gz
+    mv v1.3p1.tar.gz brat-v1.3_Crunchy_Frog.tar.gz
     tar -xzvf brat-v1.3_Crunchy_Frog.tar.gz
     rm *.tar.gz
 
