@@ -8,6 +8,7 @@ tabulate
 pyyaml
 texttable
 sklearn
+scikit-learn
 pytorch-nlp
 tqdm
 requests
