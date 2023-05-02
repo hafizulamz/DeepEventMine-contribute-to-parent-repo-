@@ -250,8 +250,8 @@ elif [ "$DATA_TYPE" = "brat" ]; then
     cd $BRAT_DIR
     
     wget https://github.com/nlplab/brat/archive/refs/tags/v1.3p1.tar.gz
-    mv v1.3p1.tar.gz brat-v1.3_Crunchy_Frog.tar.gz
-    tar -xzvf brat-v1.3_Crunchy_Frog.tar.gz
+    tar -xzvf v1.3p1.tar.gz
+    mv brat-1.3p1 brat-v1.3_Crunchy_Frog
     rm *.tar.gz
 
     cd $ROOT_DIR
