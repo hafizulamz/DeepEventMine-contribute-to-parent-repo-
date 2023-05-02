@@ -44,9 +44,9 @@ if [ "$DATA_TYPE" = "bionlp" ]; then
 
         cd $GE13_DIR
 
-        wget http://2013.bionlp-st.org/tasks/BioNLP-ST-2013_GE_train_data_rev3.tar.gz
-        wget http://2013.bionlp-st.org/tasks/BioNLP-ST-2013_GE_devel_data_rev3.tar.gz
-        wget http://2013.bionlp-st.org/tasks/BioNLP-ST-2013_GE_test_data_rev1.tar.gz
+        wget "https://drive.google.com/u/0/uc?id=1-Dm-UWGqlOGoNJNK2n7QACx2LxswVZhs&export=download"
+        wget "https://drive.google.com/u/0/uc?id=1o3peK8JKScrISAlz-D0-aQlaTvdl6jZK&export=download"
+        wget "https://drive.google.com/u/0/uc?id=1p_F3MGcnaLDF6hrWbZIBDAKPIEYU8TMe&export=download"
 
         tar -xzvf BioNLP-ST-2013_GE_train_data_rev3.tar.gz
         tar -xzvf BioNLP-ST-2013_GE_devel_data_rev3.tar.gz
